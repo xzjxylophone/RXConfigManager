@@ -1,0 +1,32 @@
+//
+// Prefix header for all source files of the 'Wanhui' target in the 'Wanhui' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+
+
+#import <Foundation/Foundation.h>
+
+
+
+
+#pragma mark - cocoapod
+
+#pragma mark - My cocoapod
+//
+//#import "RXInfoHelper.h"
+//#import "RXTableViewItemHeader.h"
+
+#pragma mark - App
+#import "AppDelegate.h"
+
+#endif
+
+

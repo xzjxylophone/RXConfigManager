@@ -1,13 +1,14 @@
 //
-//  MainViewController.h
+//  RXConfigManagerHeader.h
 //  RXConfigManagerExample
 //
 //  Created by Rush.D.Xzj on 15/11/22.
 //  Copyright © 2015年 Rush.D.Xzj. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#ifndef RXConfigManagerHeader_h
+#define RXConfigManagerHeader_h
+#import "RXConfigManager.h"
 #import "RXConfigViewController.h"
-@interface MainViewController : RXConfigViewController
 
-@end
+#endif /* RXConfigManagerHeader_h */

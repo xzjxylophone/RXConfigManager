@@ -3,6 +3,6 @@
 
 pod 'RXInfoHelper'
 pod 'RXTableViewItem'
-
-
+pod 'RXPushTokenManager'
+pod 'RXCategory'
 

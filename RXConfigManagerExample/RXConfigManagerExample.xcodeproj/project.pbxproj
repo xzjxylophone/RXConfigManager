@@ -12,6 +12,8 @@
 		582DAE8F1C016B6B00753ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582DAE8E1C016B6B00753ABE /* Assets.xcassets */; };
 		582DAE9C1C016B9D00753ABE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DAE9A1C016B9D00753ABE /* MainViewController.m */; };
 		582DAE9D1C016B9D00753ABE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582DAE9B1C016B9D00753ABE /* MainViewController.xib */; };
+		582DAEA21C016F2300753ABE /* RXConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DAEA11C016F2300753ABE /* RXConfigViewController.m */; };
+		582DAEA51C016F3300753ABE /* RXConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DAEA41C016F3300753ABE /* RXConfigManager.m */; };
 		88331BF5BE6D4CFFC6B5890D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C34502CC11B65784E19FC989 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,12 @@
 		582DAE991C016B9D00753ABE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		582DAE9A1C016B9D00753ABE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		582DAE9B1C016B9D00753ABE /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		582DAE9F1C016E9400753ABE /* RXCME-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RXCME-Prefix.pch"; sourceTree = "<group>"; };
+		582DAEA01C016F2300753ABE /* RXConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXConfigViewController.h; sourceTree = "<group>"; };
+		582DAEA11C016F2300753ABE /* RXConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXConfigViewController.m; sourceTree = "<group>"; };
+		582DAEA31C016F3300753ABE /* RXConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXConfigManager.h; sourceTree = "<group>"; };
+		582DAEA41C016F3300753ABE /* RXConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXConfigManager.m; sourceTree = "<group>"; };
+		582DAEA61C016F4300753ABE /* RXConfigManagerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RXConfigManagerHeader.h; sourceTree = "<group>"; };
 		C34502CC11B65784E19FC989 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,6 +87,7 @@
 		582DAE821C016B6B00753ABE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				582DAE9F1C016E9400753ABE /* RXCME-Prefix.pch */,
 				582DAE831C016B6B00753ABE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -87,6 +96,11 @@
 		582DAE9E1C016BCE00753ABE /* RXConfigManager */ = {
 			isa = PBXGroup;
 			children = (
+				582DAEA01C016F2300753ABE /* RXConfigViewController.h */,
+				582DAEA11C016F2300753ABE /* RXConfigViewController.m */,
+				582DAEA31C016F3300753ABE /* RXConfigManager.h */,
+				582DAEA41C016F3300753ABE /* RXConfigManager.m */,
+				582DAEA61C016F4300753ABE /* RXConfigManagerHeader.h */,
 			);
 			name = RXConfigManager;
 			path = ../RXConfigManager;
@@ -231,7 +245,9 @@
 			files = (
 				582DAE871C016B6B00753ABE /* AppDelegate.m in Sources */,
 				582DAE9C1C016B9D00753ABE /* MainViewController.m in Sources */,
+				582DAEA21C016F2300753ABE /* RXConfigViewController.m in Sources */,
 				582DAE841C016B6B00753ABE /* main.m in Sources */,
+				582DAEA51C016F3300753ABE /* RXConfigManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "RXConfigManagerExample/RXCME-Prefix.pch";
 				INFOPLIST_FILE = RXConfigManagerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -338,6 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "RXConfigManagerExample/RXCME-Prefix.pch";
 				INFOPLIST_FILE = RXConfigManagerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
