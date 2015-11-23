@@ -1,5 +1,7 @@
+
+
 Pod::Spec.new do |s|
-  s.name     = “RXConfigManager"
+  s.name     = "RXConfigManager"
   s.version  = "0.1"
   s.license  = "MIT"
   s.summary  = "RXConfigManager is a config manager"
@@ -10,11 +12,10 @@ Pod::Spec.new do |s|
   s.description = %{
         RXConfigManager is a config manager.
   }
-  s.source_files = ‘RXConfigManager/*.{h,m}'
+  s.source_files = 'RXConfigManager/*.{h,m}'
   s.frameworks = 'Foundation', ‘UIKit’
   s.requires_arc = true
-  s.dependency = 'RXCategory', 'RXInfoHelper', 'RXPushTokenManager', 'RXTableViewItem'
-
+  s.dependency 'RXTableViewItem' 
   s.platform = :ios, ‘7.0'
 
 end
