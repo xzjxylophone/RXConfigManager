@@ -10,4 +10,24 @@
 
 @implementation RXConfigManager
 
+
+
+
+
+
+#pragma mark - Constructor And Destructor
+- (id)init
+{
+    if (self = [super init]) {
+        
+        
+    }
+    return self;
+}
+- (void)dealloc
+{
+    
+}
+
+
 @end

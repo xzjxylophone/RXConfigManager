@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import "RXConfigManagerHeader.h"
+#import "RXTableViewItemHeader.h"
 
 @interface MainViewController ()
 
@@ -17,6 +19,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
+    NSMutableArray *ary = [NSMutableArray arrayWithArray:self.appControlSectionItem.items];
+    
+    RXFunctionItem *item = [[RXFunctionItem alloc] initWithIconName:@"" title:@"是否是test" action:nil type:0];
+    [ary addObject:item];
+    
+    self.appControlSectionItem.items = ary;
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

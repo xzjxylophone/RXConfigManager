@@ -13,10 +13,17 @@ Pod::Spec.new do |s|
         RXConfigManager is a config manager.
   }
   s.source_files = 'RXConfigManager/*.{h,m}'
-  s.frameworks = 'Foundation', ‘UIKit’
+  s.frameworks = 'Foundation', 'UIKit'
   s.requires_arc = true
-  s.dependency 'RXTableViewItem' 
-  s.platform = :ios, ‘7.0'
+  s.platform = :ios, '6.0'
+
+
+  s.dependency 'RXTableViewItem'
+  s.dependency 'RXPushTokenManager'
+  s.dependency 'RXCategory'
+  s.dependency 'RXInfoHelper'
+
+
 
 end
 

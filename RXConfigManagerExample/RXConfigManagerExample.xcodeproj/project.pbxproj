@@ -14,6 +14,8 @@
 		582DAE9D1C016B9D00753ABE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582DAE9B1C016B9D00753ABE /* MainViewController.xib */; };
 		582DAEA21C016F2300753ABE /* RXConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DAEA11C016F2300753ABE /* RXConfigViewController.m */; };
 		582DAEA51C016F3300753ABE /* RXConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 582DAEA41C016F3300753ABE /* RXConfigManager.m */; };
+		58B946F81C11384800EA8FF8 /* RXConfigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B946F71C11384800EA8FF8 /* RXConfigCell.m */; };
+		58B946FB1C113F0500EA8FF8 /* MVConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B946FA1C113F0500EA8FF8 /* MVConfigManager.m */; };
 		88331BF5BE6D4CFFC6B5890D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C34502CC11B65784E19FC989 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,10 @@
 		582DAEA31C016F3300753ABE /* RXConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXConfigManager.h; sourceTree = "<group>"; };
 		582DAEA41C016F3300753ABE /* RXConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXConfigManager.m; sourceTree = "<group>"; };
 		582DAEA61C016F4300753ABE /* RXConfigManagerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RXConfigManagerHeader.h; sourceTree = "<group>"; };
+		58B946F61C11384800EA8FF8 /* RXConfigCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXConfigCell.h; sourceTree = "<group>"; };
+		58B946F71C11384800EA8FF8 /* RXConfigCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXConfigCell.m; sourceTree = "<group>"; };
+		58B946F91C113F0500EA8FF8 /* MVConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVConfigManager.h; sourceTree = "<group>"; };
+		58B946FA1C113F0500EA8FF8 /* MVConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVConfigManager.m; sourceTree = "<group>"; };
 		C34502CC11B65784E19FC989 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,6 +86,8 @@
 				582DAE991C016B9D00753ABE /* MainViewController.h */,
 				582DAE9A1C016B9D00753ABE /* MainViewController.m */,
 				582DAE9B1C016B9D00753ABE /* MainViewController.xib */,
+				58B946F91C113F0500EA8FF8 /* MVConfigManager.h */,
+				58B946FA1C113F0500EA8FF8 /* MVConfigManager.m */,
 			);
 			path = RXConfigManagerExample;
 			sourceTree = "<group>";
@@ -96,6 +104,8 @@
 		582DAE9E1C016BCE00753ABE /* RXConfigManager */ = {
 			isa = PBXGroup;
 			children = (
+				58B946F61C11384800EA8FF8 /* RXConfigCell.h */,
+				58B946F71C11384800EA8FF8 /* RXConfigCell.m */,
 				582DAEA01C016F2300753ABE /* RXConfigViewController.h */,
 				582DAEA11C016F2300753ABE /* RXConfigViewController.m */,
 				582DAEA31C016F3300753ABE /* RXConfigManager.h */,
@@ -246,8 +256,10 @@
 				582DAE871C016B6B00753ABE /* AppDelegate.m in Sources */,
 				582DAE9C1C016B9D00753ABE /* MainViewController.m in Sources */,
 				582DAEA21C016F2300753ABE /* RXConfigViewController.m in Sources */,
+				58B946F81C11384800EA8FF8 /* RXConfigCell.m in Sources */,
 				582DAE841C016B6B00753ABE /* main.m in Sources */,
 				582DAEA51C016F3300753ABE /* RXConfigManager.m in Sources */,
+				58B946FB1C113F0500EA8FF8 /* MVConfigManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

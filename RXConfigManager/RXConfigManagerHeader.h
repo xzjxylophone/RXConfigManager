@@ -10,5 +10,7 @@
 #define RXConfigManagerHeader_h
 #import "RXConfigManager.h"
 #import "RXConfigViewController.h"
+#import "RXConfigCell.h"
+
 
 #endif /* RXConfigManagerHeader_h */

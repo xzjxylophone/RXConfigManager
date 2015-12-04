@@ -22,6 +22,10 @@
 // App的信息
 @property (nonatomic, strong) RXTVSectionItem *appInfoSectionItem;
 
+
+// App 控制信息
+@property (nonatomic, strong) RXTVSectionItem *appControlSectionItem;
+
 - (void)initializeUIAndData;
 - (void)initializeAction;
 

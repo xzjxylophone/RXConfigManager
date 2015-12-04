@@ -11,6 +11,8 @@
 #import "RXTableViewItemHeader.h"
 #import "RXInfoHelper.h"
 #import "UIDevice+RXUtility.h"
+#import "RXConfigCell.h"
+#import "RXConfigManager.h"
 @interface RXConfigViewController ()
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -104,11 +106,73 @@
     self.title = @"各种信息及调试开关";
     
     
+    
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat height = 50;
     
+    // app control
+    
+    UILabel *appControlLabelView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    appControlLabelView.backgroundColor = bgColor;
+    appControlLabelView.text = @"App控制信息";
     
     
+    
+    self.appControlSectionItem = [[RXTVSectionItem alloc] init];
+    self.appControlSectionItem.data = appControlLabelView;
+    
+    RXFunctionItem *item100 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"服务器版本" action:nil type:0];
+    RXFunctionItem *item101 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"在Release下配置有效" action:nil type:0];
+    
+    self.appControlSectionItem.items = @[item100, item101];
+    
+    
+    
+    
+    
+    
+    
+    // app info
+    
+    UILabel *appInfoLabelView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    appInfoLabelView.backgroundColor = bgColor;
+    
+    appInfoLabelView.text = @"App应用基本信息";
+    
+    
+    
+    self.appInfoSectionItem = [[RXTVSectionItem alloc] init];
+    self.appInfoSectionItem.data = appInfoLabelView;
+    
+    
+    NSString *object000 = @"";
+#if DEBUG
+    object000 = @"DEBUG模式";
+#else
+    object000 = @"RELEASE模式";
+#endif
+    RXFunctionItem *item000 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"编译方式" action:nil type:0 object:object000];
+    
+    
+    
+    RXFunctionItem *item10 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"Version" action:nil type:0 object:([RXInfoHelper appVersion])];
+    RXFunctionItem *item11 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"Build" action:nil type:0 object:([RXInfoHelper appBuild])];
+    RXFunctionItem *item12 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"Identifier" action:nil type:0 object:([RXInfoHelper appBundleIdentifier])];
+    RXFunctionItem *item13 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"应用名称" action:nil type:0 object:([RXInfoHelper appBundleName])];
+    
+    
+    RXFunctionItem *item14 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"应用push" action:nil type:0 object:([RXPushTokenManager lastPushToken])];
+    
+    
+    
+    
+    self.appInfoSectionItem.items = @[item000, item10, item11, item12, item13, item14];
+    
+    
+    
+    
+    
+    // iphone base info
     UILabel *baseInfoLabelView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     baseInfoLabelView.backgroundColor = bgColor;
     baseInfoLabelView.text = @"手机及iOS系统信息";
@@ -154,30 +218,11 @@
     self.baseInfoSectionItem.items = @[item00, item01, item02, item03, item05, item06, item07, item09];
     
     
-    UILabel *appInfoLabelView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-    appInfoLabelView.backgroundColor = [UIColor clearColor];
-
-    appInfoLabelView.text = @"App应用基本信息";
-    
-    self.appInfoSectionItem = [[RXTVSectionItem alloc] init];
-    self.appInfoSectionItem.data = appInfoLabelView;
-    
-    
-    RXFunctionItem *item10 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"Version" action:nil type:0 object:([RXInfoHelper appVersion])];
-    RXFunctionItem *item11 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"Build" action:nil type:0 object:([RXInfoHelper appBuild])];
-    RXFunctionItem *item12 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"Identifier" action:nil type:0 object:([RXInfoHelper appBundleIdentifier])];
-    RXFunctionItem *item13 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"应用名称" action:nil type:0 object:([RXInfoHelper appBundleName])];
-    
-    
-    RXFunctionItem *item14 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"应用push" action:nil type:0 object:([RXPushTokenManager lastPushToken])];
     
     
     
     
-    self.appInfoSectionItem.items = @[item10, item11, item12, item13, item14];
-    
-    
-    self.functionItems = @[self.baseInfoSectionItem, self.appInfoSectionItem];
+    self.functionItems = @[self.appControlSectionItem, self.appInfoSectionItem, self.baseInfoSectionItem];
     
     self.view.backgroundColor = bgColor;
     
