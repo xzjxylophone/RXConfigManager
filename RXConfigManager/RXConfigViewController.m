@@ -12,7 +12,7 @@
 #import "RXInfoHelper.h"
 #import "UIDevice+RXUtility.h"
 #import "RXConfigCell.h"
-#import "MVConfigManager.h"
+#import "RXConfigManager.h"
 #import "RXConfigItem.h"
 #import "RXCategoryHeader.h"
 @interface RXConfigViewController ()<UIAlertViewDelegate, UIActionSheetDelegate>
