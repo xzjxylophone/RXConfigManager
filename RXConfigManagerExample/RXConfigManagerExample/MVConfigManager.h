@@ -12,4 +12,8 @@
 
 @property (nonatomic, assign) BOOL isTest;
 
+
+
+#pragma mark - Singleton Model
++ (MVConfigManager *)sharedInstance;
 @end

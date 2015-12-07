@@ -10,4 +10,45 @@
 
 @implementation MVConfigManager
 
+
+
+
+
+
+
+
+
+#pragma mark - Constructor And Destructor
+- (id)init
+{
+    if (self = [super init]) {
+        
+        self.isTest = YES;
+        
+        
+    }
+    return self;
+}
+- (void)dealloc
+{
+    
+}
+
+
+
+
+
+
+
+
+#pragma mark - Singleton Model
++ (MVConfigManager *)sharedInstance
+{
+    static MVConfigManager *sharedInstance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
 @end

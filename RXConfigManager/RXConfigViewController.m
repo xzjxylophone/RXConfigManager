@@ -12,7 +12,7 @@
 #import "RXInfoHelper.h"
 #import "UIDevice+RXUtility.h"
 #import "RXConfigCell.h"
-#import "RXConfigManager.h"
+#import "MVConfigManager.h"
 @interface RXConfigViewController ()
 
 @property (strong, nonatomic) UITableView *tableView;

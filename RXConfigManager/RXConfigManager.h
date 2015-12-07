@@ -22,14 +22,28 @@ typedef enum E_RX_ServerType {
 @interface RXConfigManager : NSObject
 
 
-@property (nonatomic, assign) E_RX_ServerType e_RX_ServerType;  // 开发环境
-// 是否在release的环境强制可以切换服务器的type, 默认在release环境是Product环境, 默认是No
-@property (nonatomic, assign) BOOL isForceToChangeServerTypeWhenRelease;
+#pragma mark - Property
+// 服务器网络环境, DEBUG默认是Test,RELEASE默认是Product
+@property (nonatomic, assign) E_RX_ServerType e_RX_ServerType;
+// 是否记录网络输出, 默认的是YES
+@property (nonatomic, assign) BOOL isRecordHttpLog;
+
+#pragma mark - Public
+// 所有的属性
+- (NSArray *)allProperty;
+// 基本的配置信息
+- (NSArray *)baseConfigItems;
+// 保存到磁盘
+- (void)saveToDisk;
 
 
 
+#pragma mark - Need To Override
 
-// 每个App自己管理的配置类去实现单例
+// 所有属性的默认值,子类需要重写
+- (NSDictionary *)defaultProvertyValue;
 
+#pragma mark - Singleton Model
++ (RXConfigManager *)sharedInstance;
 
 @end

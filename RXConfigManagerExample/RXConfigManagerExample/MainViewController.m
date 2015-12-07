@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "RXConfigManagerHeader.h"
 #import "RXTableViewItemHeader.h"
-
+#import "MVConfigManager.h"
 @interface MainViewController ()
 
 @end
@@ -29,6 +29,8 @@
     
     self.appControlSectionItem.items = ary;
     
+    
+    [[MVConfigManager sharedInstance] allProperty];
     
     
 }
