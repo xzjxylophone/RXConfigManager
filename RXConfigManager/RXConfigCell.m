@@ -8,6 +8,7 @@
 
 #import "RXConfigCell.h"
 #import "RXFunctionItem.h"
+#import "RXConfigItem.h"
 @interface RXConfigCell ()
 
 @property (nonatomic, strong) UILabel *lblLeft;
@@ -24,6 +25,9 @@
         if ([tmp.object isKindOfClass:[NSString class]]) {
             self.lblRight.text = tmp.object;
         }
+    } else if ([data isKindOfClass:[RXConfigItem class]]) {
+        RXConfigItem *tmp = data;
+        self.lblLeft.text = [NSString stringWithFormat:@"%@:", tmp.title];
     } else {
         
     }

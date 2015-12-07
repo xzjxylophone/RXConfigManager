@@ -16,7 +16,7 @@ typedef enum E_RX_ServerType {
     kE_RX_ServerType_Other          =           4,  // 其他环境
 }E_RX_ServerType;
 
-
+NSString *NSStringFromE_RX_ServerType(E_RX_ServerType type);
 
 
 @interface RXConfigManager : NSObject
@@ -31,10 +31,11 @@ typedef enum E_RX_ServerType {
 #pragma mark - Public
 // 所有的属性
 - (NSArray *)allProperty;
-// 基本的配置信息
-- (NSArray *)baseConfigItems;
+
 // 保存到磁盘
 - (void)saveToDisk;
+// 所有属性得到的一个字典
+- (NSDictionary *)dictionaryValue;
 
 
 

@@ -19,11 +19,15 @@ typedef enum E_RX_ConfigType {
 @interface RXConfigItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *des;
+@property (nonatomic, strong) id value;
 @property (nonatomic, assign) SEL action;
 @property (nonatomic, assign) E_RX_ConfigType e_RX_ConfigType;
 
 @property (nonatomic, copy) NSString *propertyName;
-@property (nonatomic, strong) id propertyValue;
+
+
+
 
 
 

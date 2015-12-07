@@ -9,6 +9,25 @@
 #import "RXConfigManager.h"
 
 #import <objc/runtime.h>
+#import "RXConfigItem.h"
+
+
+NSString *NSStringFromE_RX_ServerType(E_RX_ServerType type)
+{
+    switch (type) {
+        case kE_RX_ServerType_Test:
+            return @"测试环境";
+        case kE_RX_ServerType_Pre:
+            return @"预发布环境";
+        case kE_RX_ServerType_Product:
+            return @"生产环境";
+        case kE_RX_ServerType_Other:
+        default:
+            return @"未定义";
+    }
+}
+
+
 
 #define UDKey_RX_ConfigManager      @"UDKey_RX_ConfigManager"
 @interface RXConfigManager ()
@@ -33,11 +52,6 @@
 }
 
 
-- (NSArray *)baseConfigItems
-{
-    return nil;
-}
-
 
 - (void)saveToDisk
 {
@@ -46,6 +60,19 @@
     [ud setValue:dic forKey:UDKey_RX_ConfigManager];
     [ud synchronize];
 }
+- (NSDictionary *)dictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSArray *allProperty = [self allProperty];
+    for (NSString *str in allProperty) {
+        id value = [self valueForKey:str];
+        if (value != nil) {
+            [dic setObject:value forKey:str];
+        }
+    }
+    return dic;
+}
+
 #pragma mark - Need To Override
 - (NSDictionary *)defaultProvertyValue
 {
@@ -99,18 +126,6 @@
         }
         [self setValue:setValue forKey:key];
     }
-}
-- (NSDictionary *)dictionaryValue
-{
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSArray *allProperty = [self allProperty];
-    for (NSString *str in allProperty) {
-        id value = [self valueForKey:str];
-        if (value != nil) {
-            [dic setObject:value forKey:str];
-        }
-    }
-    return dic;
 }
 
 #pragma mark - Constructor And Destructor

@@ -12,6 +12,6 @@
 #import "RXConfigViewController.h"
 #import "RXConfigCell.h"
 #import "RXConfigItem.h"
-#import "RXConfigManagerItem.h"
+
 
 #endif /* RXConfigManagerHeader_h */

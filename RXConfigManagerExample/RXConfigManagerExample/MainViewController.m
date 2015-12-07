@@ -16,6 +16,37 @@
 
 @implementation MainViewController
 
+
+- (NSArray *)allConfigItems
+{
+    
+    MVConfigManager *cm = [MVConfigManager sharedInstance];
+    
+    
+    NSMutableArray *ary = [NSMutableArray array];
+    RXConfigItem *item = [[RXConfigItem alloc] init];
+    item.title = @"服务器环境";
+    item.propertyName = @"e_RX_ServerType";
+    item.e_RX_ConfigType = kE_RX_ConfigType_Enum;
+    item.value = @(cm.e_RX_ServerType);
+    item.des = NSStringFromE_RX_ServerType(cm.e_RX_ServerType);
+    [ary addObject:item];
+    
+    
+    item = [[RXConfigItem alloc] init];
+    item.title = @"是否是test";
+    item.propertyName = @"isTest";
+    item.e_RX_ConfigType = kE_RX_ConfigType_Select;
+    item.value = @(cm.isTest);
+    [ary addObject:item];
+    
+    return ary;
+}
+
+
+
+
+#pragma mark - View Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -23,15 +54,14 @@
     
     
     NSMutableArray *ary = [NSMutableArray arrayWithArray:self.appControlSectionItem.items];
-    
-    RXFunctionItem *item = [[RXFunctionItem alloc] initWithIconName:@"" title:@"是否是test" action:nil type:0];
-    [ary addObject:item];
+    [ary addObjectsFromArray:[self allConfigItems]];
     
     self.appControlSectionItem.items = ary;
-    
-    
-    [[MVConfigManager sharedInstance] allProperty];
-    
+    NSDictionary *dic = [MVConfigManager sharedInstance].dictionaryValue;
+    NSLog(@"dic:%@", dic);
+    for (NSString *key in dic.allKeys) {
+        NSLog(@"key:%@", key);
+    }
     
 }
 

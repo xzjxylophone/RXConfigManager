@@ -13,6 +13,7 @@
 #import "UIDevice+RXUtility.h"
 #import "RXConfigCell.h"
 #import "MVConfigManager.h"
+#import "RXConfigItem.h"
 @interface RXConfigViewController ()
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -38,7 +39,7 @@
 {
     
     RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
-    RXFunctionItem *item = sectionItem.items[indexPath.row];
+    id item = sectionItem.items[indexPath.row];
     NSString *identify = [RXConfigCell identifier];
     RXConfigCell *cell = (RXConfigCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
@@ -62,11 +63,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
-    RXFunctionItem *item = sectionItem.items[indexPath.row];
-    if (item.action != nil) {
-        [self performSelector:item.action withObject:nil afterDelay:0];
+    id item = sectionItem.items[indexPath.row];
+    SEL action = nil;
+    if ([item isKindOfClass:[RXFunctionItem class]]) {
+        RXFunctionItem *tmp = item;
+        action = tmp.action;
+    } else if ([item isKindOfClass:[RXConfigItem class]]) {
+        RXConfigItem *tmp = item;
+        action = tmp.action;
+    }
+    if (action != nil) {
+        [self performSelector:action withObject:nil afterDelay:0];
     }
     
 }
@@ -121,10 +129,7 @@
     self.appControlSectionItem = [[RXTVSectionItem alloc] init];
     self.appControlSectionItem.data = appControlLabelView;
     
-    RXFunctionItem *item100 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"服务器版本" action:nil type:0];
-    RXFunctionItem *item101 = [[RXFunctionItem alloc] initWithIconName:@"" title:@"在Release下配置有效" action:nil type:0];
     
-    self.appControlSectionItem.items = @[item100, item101];
     
     
     

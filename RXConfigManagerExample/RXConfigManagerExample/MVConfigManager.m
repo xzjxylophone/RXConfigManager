@@ -7,14 +7,21 @@
 //
 
 #import "MVConfigManager.h"
-
+#import "RXConfigItem.h"
 @implementation MVConfigManager
 
 
 
 
+#pragma mark - Override
 
-
+- (NSDictionary *)defaultProvertyValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[super defaultProvertyValue]];
+    NSDictionary *dic2 = @{@"isTest":@(YES)};
+    [dic setValuesForKeysWithDictionary:dic2];
+    return dic;
+}
 
 
 
@@ -23,7 +30,6 @@
 {
     if (self = [super init]) {
         
-        self.isTest = YES;
         
         
     }
