@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MainViewController.h"
-
+#import "RXConfigManager.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) UINavigationController *mainNC;
@@ -26,6 +26,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    [RXConfigManager configAppConfigManagerClsString:@"MVConfigManager"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showMain];
     [self.window makeKeyAndVisible];

@@ -18,6 +18,10 @@
 @property (nonatomic, assign) SEL action;
 @property (nonatomic, assign) E_RX_ConfigType e_RX_ConfigType;
 
+// 只有在e_RX_ConfigType是kE_RX_ConfigType_Enum有效
+@property (nonatomic, strong) NSArray *enumStrAry; // 枚举字符串数组
+@property (nonatomic, assign) NSInteger enumStartIndex; // 枚举起始Index
+
 @property (nonatomic, copy) NSString *propertyName;
 
 

@@ -14,7 +14,8 @@
 #import "RXConfigCell.h"
 #import "MVConfigManager.h"
 #import "RXConfigItem.h"
-@interface RXConfigViewController ()
+#import "RXCategoryHeader.h"
+@interface RXConfigViewController ()<UIAlertViewDelegate, UIActionSheetDelegate>
 
 
 
@@ -36,6 +37,86 @@
     return bbi;
 }
 
+
+#pragma mark - Need To Override
+
+
+- (NSArray *)allConfigItems
+{
+    
+    id cm = [RXConfigManager configManagerObject];
+    id value = nil;
+    
+    NSMutableArray *ary = [NSMutableArray array];
+    RXConfigItem *item = [[RXConfigItem alloc] init];
+    item.title = @"服务器环境";
+    item.propertyName = @"e_RX_ServerType";
+    value = [cm valueForKey:item.propertyName];
+    item.e_RX_ConfigType = kE_RX_ConfigType_Enum;
+    item.value = value;
+    item.des = NSStringFromE_RX_ServerType((E_RX_ServerType)([value integerValue]));
+    item.action = @selector(serverAction:);
+    item.enumStartIndex = 1;
+    item.enumStrAry = @[@"正式环境", @"预发布环境", @"测试环境", @"未定义"];
+    [ary addObject:item];
+    
+    item = [[RXConfigItem alloc] init];
+    item.title = @"是否记录网络请求日志";
+    item.propertyName = @"isRecordHttpLog";
+    value = [cm valueForKey:item.propertyName];
+    item.e_RX_ConfigType = kE_RX_ConfigType_Select;
+    item.value = value;
+    [ary addObject:item];
+    
+    
+    
+    
+    return ary;
+}
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    NSLog(@"buttonIndex:%zd", buttonIndex);
+    RXConfigItem *item = actionSheet.rx_data;
+    NSInteger offset = item.enumStartIndex == 0 ? -1 : 0;
+    E_RX_ServerType serverType = (E_RX_ServerType)(buttonIndex + offset);
+    item.value = @(serverType);
+    item.des = NSStringFromE_RX_ServerType(serverType);
+    [self.tableView reloadData];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == alertView.cancelButtonIndex) {
+        return;
+    }
+    NSLog(@"save");
+    id cm = [RXConfigManager configManagerObject];
+    for (RXTVSectionItem *sItem in self.functionItems) {
+        for (id value in sItem.items) {
+            if ([value isKindOfClass:[RXConfigItem class]]) {
+                RXConfigItem *tmp = value;
+                switch (tmp.e_RX_ConfigType) {
+                    case kE_RX_ConfigType_Enum:
+                    case kE_RX_ConfigType_Select:
+                    {
+                        [cm setValue:tmp.value forKey:tmp.propertyName];
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    [cm saveToDisk];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NKey_RX_ConfigChanged object:nil];
+}
+
 #pragma mark - Action
 - (void)bbiCancelAction:(id)sender
 {
@@ -47,8 +128,43 @@
 }
 - (void)bbiSaveAction:(id)sender
 {
-    // 让子类去实现
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否保存所配置项" delegate:self cancelButtonTitle:@"再想一想" otherButtonTitles:@"保存", nil];
+    [av show];
+    
 }
+
+- (void)mySwitchValueChanged:(id)sender
+{
+    UISwitch *mySwitch = sender;
+    UITableViewCell *cell = [mySwitch rx_clsViewFromCls:[UITableViewCell class]];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
+    id item = sectionItem.items[indexPath.row];
+    if ([item isKindOfClass:[RXConfigItem class]]) {
+        RXConfigItem *tmp = item;
+        if (tmp.e_RX_ConfigType == kE_RX_ConfigType_Select) {
+            tmp.value = @(mySwitch.isOn);
+        }
+    }
+}
+- (void)serverAction:(id)sender
+{
+    NSIndexPath *indexPath = sender;
+    RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
+    id item = sectionItem.items[indexPath.row];
+    if ([item isKindOfClass:[RXConfigItem class]]) {
+        RXConfigItem *tmp = item;
+        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+        for (NSString *str in tmp.enumStrAry) {
+            [as addButtonWithTitle:str];
+        }
+        as.rx_data = item;
+        [as showInView:self.view];
+    }
+}
+
+
+
 
 
 #pragma mark - UITableViewDataSource
@@ -70,6 +186,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     [cell setData:item];
+    [cell.mySwitch addTarget:self action:@selector(mySwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
     return cell;
 }
 
@@ -97,7 +214,7 @@
         action = tmp.action;
     }
     if (action != nil) {
-        [self performSelector:action withObject:nil afterDelay:0];
+        [self performSelector:action withObject:indexPath afterDelay:0];
     }
     
 }
@@ -155,7 +272,7 @@
     
     self.appControlSectionItem = [[RXTVSectionItem alloc] init];
     self.appControlSectionItem.data = appControlLabelView;
-    
+    self.appControlSectionItem.items = [self allConfigItems];
     
     
     

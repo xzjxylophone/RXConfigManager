@@ -12,7 +12,7 @@ typedef enum E_RX_ServerType {
     kE_RX_ServerType_Product        =           1,  // 正式环境
     kE_RX_ServerType_Pre            =           2,  // 预发布环境
     kE_RX_ServerType_Test           =           3,  // 测试环境
-    kE_RX_ServerType_Other          =           4,  // 其他环境
+    kE_RX_ServerType_Other          =           4,  // 未定义
 }E_RX_ServerType;
 
 NSString *NSStringFromE_RX_ServerType(E_RX_ServerType type);

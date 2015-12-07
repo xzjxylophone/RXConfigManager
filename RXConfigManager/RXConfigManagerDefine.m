@@ -16,7 +16,7 @@ NSString *NSStringFromE_RX_ServerType(E_RX_ServerType type)
         case kE_RX_ServerType_Pre:
             return @"预发布环境";
         case kE_RX_ServerType_Product:
-            return @"生产环境";
+            return @"正式环境";
         case kE_RX_ServerType_Other:
         default:
             return @"未定义";

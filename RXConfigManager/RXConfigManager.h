@@ -15,6 +15,12 @@
 @interface RXConfigManager : NSObject
 
 
+#pragma mark - Class Method
+// 配置用户的自己的类
++ (void)configAppConfigManagerClsString:(NSString *)clsString;
++ (id)configManagerObject;
+
+
 #pragma mark - Property
 // 服务器网络环境, DEBUG默认是Test,RELEASE默认是Product
 @property (nonatomic, assign) E_RX_ServerType e_RX_ServerType;

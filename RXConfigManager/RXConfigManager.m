@@ -20,6 +20,21 @@
 
 @implementation RXConfigManager
 
+#pragma mark - Class Method
+static NSString *configClsName;
+// 配置用户的自己的类
++ (void)configAppConfigManagerClsString:(NSString *)clsString
+{
+    configClsName = clsString;
+}
++ (id)configManagerObject
+{
+    Class cls = NSClassFromString(configClsName);
+    if (cls == nil) {
+        cls = [RXConfigManager class];
+    }
+    return [cls sharedInstance];
+}
 
 
 #pragma mark - Public
