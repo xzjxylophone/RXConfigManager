@@ -17,6 +17,7 @@
 		5863FC661C11D99E008E71F7 /* RXConfigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5863FC651C11D99E008E71F7 /* RXConfigItem.m */; };
 		58B946F81C11384800EA8FF8 /* RXConfigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B946F71C11384800EA8FF8 /* RXConfigCell.m */; };
 		58B946FB1C113F0500EA8FF8 /* MVConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B946FA1C113F0500EA8FF8 /* MVConfigManager.m */; };
+		58E603FE1C1562DF00A4D82B /* RXConfigManagerDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E603FD1C1562DF00A4D82B /* RXConfigManagerDefine.m */; };
 		88331BF5BE6D4CFFC6B5890D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C34502CC11B65784E19FC989 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		58B946F71C11384800EA8FF8 /* RXConfigCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXConfigCell.m; sourceTree = "<group>"; };
 		58B946F91C113F0500EA8FF8 /* MVConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVConfigManager.h; sourceTree = "<group>"; };
 		58B946FA1C113F0500EA8FF8 /* MVConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVConfigManager.m; sourceTree = "<group>"; };
+		58E603FC1C1562DF00A4D82B /* RXConfigManagerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXConfigManagerDefine.h; sourceTree = "<group>"; };
+		58E603FD1C1562DF00A4D82B /* RXConfigManagerDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXConfigManagerDefine.m; sourceTree = "<group>"; };
 		C34502CC11B65784E19FC989 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,6 +119,8 @@
 				582DAEA31C016F3300753ABE /* RXConfigManager.h */,
 				582DAEA41C016F3300753ABE /* RXConfigManager.m */,
 				582DAEA61C016F4300753ABE /* RXConfigManagerHeader.h */,
+				58E603FC1C1562DF00A4D82B /* RXConfigManagerDefine.h */,
+				58E603FD1C1562DF00A4D82B /* RXConfigManagerDefine.m */,
 			);
 			name = RXConfigManager;
 			path = ../RXConfigManager;
@@ -260,6 +265,7 @@
 			files = (
 				5863FC661C11D99E008E71F7 /* RXConfigItem.m in Sources */,
 				582DAE871C016B6B00753ABE /* AppDelegate.m in Sources */,
+				58E603FE1C1562DF00A4D82B /* RXConfigManagerDefine.m in Sources */,
 				582DAE9C1C016B9D00753ABE /* MainViewController.m in Sources */,
 				582DAEA21C016F2300753ABE /* RXConfigViewController.m in Sources */,
 				58B946F81C11384800EA8FF8 /* RXConfigCell.m in Sources */,

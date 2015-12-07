@@ -12,4 +12,7 @@
 // 配置Cell
 @interface RXConfigCell : RXCell
 
+
+@property (nonatomic, strong) UISwitch *mySwitch;
+
 @end

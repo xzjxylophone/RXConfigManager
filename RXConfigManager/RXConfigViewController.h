@@ -12,6 +12,7 @@
 
 
 @interface RXConfigViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) UITableView *tableView;
 
 
 @property (nonatomic, strong) NSArray *functionItems;
@@ -27,6 +28,9 @@
 
 - (void)initializeUIAndData;
 - (void)initializeAction;
+
+
+- (void)bbiSaveAction:(id)sender;
 
 
 

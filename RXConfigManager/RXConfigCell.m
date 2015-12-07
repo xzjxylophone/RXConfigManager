@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *lblLeft;
 @property (nonatomic, strong) UILabel *lblRight;
 
+
 @end
 
 @implementation RXConfigCell
@@ -25,9 +26,36 @@
         if ([tmp.object isKindOfClass:[NSString class]]) {
             self.lblRight.text = tmp.object;
         }
+        
+        self.lblRight.hidden = NO;
+        self.mySwitch.hidden = YES;
     } else if ([data isKindOfClass:[RXConfigItem class]]) {
         RXConfigItem *tmp = data;
         self.lblLeft.text = [NSString stringWithFormat:@"%@:", tmp.title];
+        
+        switch (tmp.e_RX_ConfigType) {
+            case kE_RX_ConfigType_Enum:
+            {
+                self.lblRight.text = tmp.des;
+                self.lblRight.hidden = NO;
+                self.mySwitch.hidden = YES;
+            }
+                break;
+            case kE_RX_ConfigType_Select:
+            {
+                self.lblRight.text = @"";
+                self.lblRight.hidden = YES;
+                self.mySwitch.hidden = NO;
+                
+                BOOL value = [tmp.value boolValue];
+                [self.mySwitch setOn:value];
+            }
+                break;
+            default:
+                break;
+        }
+        
+        
     } else {
         
     }
@@ -46,8 +74,17 @@
         self.lblLeft.numberOfLines = 0;
         self.lblRight = [[UILabel alloc] initWithFrame:CGRectMake(lblRightX, 0, lblRightWidth, height)];
         self.lblRight.numberOfLines = 0;
+        
+        CGFloat myWidth = 50;
+        CGFloat myHeight = 30;
+        CGFloat myX = width - myWidth - 20;
+        CGFloat myY = (height - myHeight) / 2.0f;
+        self.mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(myX, myY, myWidth, myHeight)];
+        
+        
         [self.contentView addSubview:self.lblLeft];
         [self.contentView addSubview:self.lblRight];
+        [self.contentView addSubview:self.mySwitch];
         self.frame = CGRectMake(0, 0, width, height);
     }
     return self;

@@ -7,16 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RXConfigManagerDefine.h"
 
 
-typedef enum E_RX_ServerType {
-    kE_RX_ServerType_Product        =           1,  // 正式环境
-    kE_RX_ServerType_Pre            =           2,  // 预发布环境
-    kE_RX_ServerType_Test           =           3,  // 测试环境
-    kE_RX_ServerType_Other          =           4,  // 其他环境
-}E_RX_ServerType;
-
-NSString *NSStringFromE_RX_ServerType(E_RX_ServerType type);
 
 
 @interface RXConfigManager : NSObject
@@ -44,6 +37,8 @@ NSString *NSStringFromE_RX_ServerType(E_RX_ServerType type);
 // 所有属性的默认值,子类需要重写
 - (NSDictionary *)defaultProvertyValue;
 
+
+// 如果有子类的话, 那就不推荐使用此单例类
 #pragma mark - Singleton Model
 + (RXConfigManager *)sharedInstance;
 

@@ -8,6 +8,8 @@
 
 #ifndef RXConfigManagerHeader_h
 #define RXConfigManagerHeader_h
+
+#import "RXConfigManagerDefine.h"
 #import "RXConfigManager.h"
 #import "RXConfigViewController.h"
 #import "RXConfigCell.h"

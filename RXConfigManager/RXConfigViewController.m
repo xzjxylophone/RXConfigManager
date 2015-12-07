@@ -16,7 +16,10 @@
 #import "RXConfigItem.h"
 @interface RXConfigViewController ()
 
-@property (strong, nonatomic) UITableView *tableView;
+
+
+@property (nonatomic, strong) UIBarButtonItem *bbiCancel;
+@property (nonatomic, strong) UIBarButtonItem *bbiSave;
 
 
 
@@ -24,7 +27,28 @@
 
 @implementation RXConfigViewController
 
+#pragma mark - Private
 
+- (UIBarButtonItem *)bbiWithTitle:(NSString *)title target:(id)target action:(SEL)action
+{
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:target action:action];
+    bbi.tintColor = [UIColor blueColor];
+    return bbi;
+}
+
+#pragma mark - Action
+- (void)bbiCancelAction:(id)sender
+{
+    if (self.navigationController.topViewController == self) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+- (void)bbiSaveAction:(id)sender
+{
+    // 让子类去实现
+}
 
 
 #pragma mark - UITableViewDataSource
@@ -37,7 +61,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
     id item = sectionItem.items[indexPath.row];
     NSString *identify = [RXConfigCell identifier];
@@ -96,7 +119,11 @@
 - (void)initializeUIAndData
 {
     
+    self.bbiCancel = [self bbiWithTitle:@"取消" target:self action:@selector(bbiCancelAction:)];
+    self.bbiSave = [self bbiWithTitle:@"保存" target:self action:@selector(bbiSaveAction:)];
     
+    self.navigationItem.leftBarButtonItem = self.bbiCancel;
+    self.navigationItem.rightBarButtonItem = self.bbiSave;
     
     UIColor *bgColor = [UIColor grayColor];
     

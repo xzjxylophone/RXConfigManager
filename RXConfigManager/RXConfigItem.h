@@ -7,14 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RXConfigManagerDefine.h"
 
-
-// 用于cell的Item
-
-typedef enum E_RX_ConfigType {
-    kE_RX_ConfigType_Select     =           1, // BOOL选择值
-    kE_RX_ConfigType_Enum       =           2, // 枚举值
-}E_RX_ConfigType;
 
 @interface RXConfigItem : NSObject
 
