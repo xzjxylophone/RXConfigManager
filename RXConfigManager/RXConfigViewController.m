@@ -55,7 +55,7 @@
     item.e_RX_ConfigType = kE_RX_ConfigType_Enum;
     item.value = value;
     item.des = NSStringFromE_RX_ServerType((E_RX_ServerType)([value integerValue]));
-    item.action = @selector(serverAction:);
+    item.action = @selector(enumSelectAction:);
     item.enumStartIndex = 1;
     item.enumStrAry = @[@"正式环境", @"预发布环境", @"测试环境", @"未定义"];
     [ary addObject:item];
@@ -84,7 +84,7 @@
     NSInteger offset = item.enumStartIndex == 0 ? -1 : 0;
     E_RX_ServerType serverType = (E_RX_ServerType)(buttonIndex + offset);
     item.value = @(serverType);
-    item.des = NSStringFromE_RX_ServerType(serverType);
+    item.des = [actionSheet buttonTitleAtIndex:buttonIndex];
     [self.tableView reloadData];
 }
 
@@ -147,7 +147,13 @@
         }
     }
 }
+// 应该是被废弃掉
 - (void)serverAction:(id)sender
+{
+    [self enumSelectAction:sender];
+}
+
+- (void)enumSelectAction:(id)sender
 {
     NSIndexPath *indexPath = sender;
     RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
@@ -162,8 +168,6 @@
         [as showInView:self.view];
     }
 }
-
-
 
 
 
