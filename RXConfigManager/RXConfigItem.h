@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSString *des;
 @property (nonatomic, strong) id value;
 @property (nonatomic, assign) SEL action;
+
+// 如果没有Action并且type 是enum,那么自动有一个enum事件
 @property (nonatomic, assign) E_RX_ConfigType e_RX_ConfigType;
 
 // 只有在e_RX_ConfigType是kE_RX_ConfigType_Enum有效

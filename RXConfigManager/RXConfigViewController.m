@@ -255,17 +255,38 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RXTVSectionItem *sectionItem = self.functionItems[indexPath.section];
     id item = sectionItem.items[indexPath.row];
-    SEL action = nil;
     if ([item isKindOfClass:[RXFunctionItem class]]) {
         RXFunctionItem *tmp = item;
-        action = tmp.action;
+        SEL action = tmp.action;
+        if (action != nil) {
+            [self performSelector:action withObject:indexPath afterDelay:0];
+        }
     } else if ([item isKindOfClass:[RXConfigItem class]]) {
         RXConfigItem *tmp = item;
-        action = tmp.action;
+        SEL action = tmp.action;
+        if (action != nil) {
+            [self performSelector:action withObject:indexPath afterDelay:0];
+        } else {
+            RXConfigItem *tmp = item;
+            switch (tmp.e_RX_ConfigType) {
+                case kE_RX_ConfigType_Enum:
+                {
+                    [self enumSelectAction:indexPath];
+
+                }
+                    break;
+                case kE_RX_ConfigType_Select:
+                default:
+                {
+                    // Do Nothing
+                }
+                    break;
+            }
+        }
+    } else {
+        NSLog(@"Do Nothing");
     }
-    if (action != nil) {
-        [self performSelector:action withObject:indexPath afterDelay:0];
-    }
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -302,7 +323,6 @@
     item.e_RX_ConfigType = kE_RX_ConfigType_Enum;
     item.value = value;
     item.des = NSStringFromE_RX_ServerType((E_RX_ServerType)([value integerValue]));
-    item.action = @selector(enumSelectAction:);
     item.enumStartIndex = 1;
     item.enumStrAry = @[@"正式环境", @"预发布环境", @"测试环境", @"未定义"];
     [ary addObject:item];
