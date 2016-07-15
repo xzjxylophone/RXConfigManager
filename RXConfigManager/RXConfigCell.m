@@ -85,14 +85,14 @@
         [self.contentView addSubview:self.lblLeft];
         [self.contentView addSubview:self.lblRight];
         [self.contentView addSubview:self.mySwitch];
-        self.frame = CGRectMake(0, 0, width, height);
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
 
 + (CGFloat)cellHeight
 {
-    return 50;
+    return 75;
 }
 
 @end
